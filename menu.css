@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+
+body { margin: 0; padding: 0; padding-top: 100px; background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%); min-height: 100vh; overflow-x: hidden; color: #2D3748; direction: rtl; }
+
+a { color: white; text-decoration: none; }
+
+section { padding-bottom: 60px; padding-top: 30px; padding-left: 20px; padding-right: 20px; }
+section:nth-child(odd), section:nth-child(even) { background-color: transparent; }
+
+.heading {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.6); padding: 30px; border-radius: 30px;
+  margin: 0 auto; max-width: 800px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); margin-bottom: 20px;
+}
+
+.heading-title { font-size: 3em; font-weight: 900; background: linear-gradient(135deg, #FF7B54, #FFB26B); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+.heading-description { font-size: 1.4em; font-weight: 600; color: #4A5568; }
+
+section h1 {
+  font-weight: 800; color: #FF7B54; margin-bottom: 25px; font-size: 2.2em; display: inline-block;
+  background: white; padding: 10px 25px; border-radius: 20px; box-shadow: 0 5px 15px rgba(255, 123, 84, 0.1); border: 1px solid rgba(255, 123, 84, 0.2);
+}
+
+/* --- تنسيق الكرت الزجاجي الفاخر --- */
+.product-card {
+    background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 25px; padding: 15px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%; display: flex; flex-direction: column; position: relative; margin-top: 20px;
+}
+.product-card:hover {
+    transform: translateY(-8px); box-shadow: 0 20px 40px rgba(255, 123, 84, 0.15);
+    background: rgba(255, 255, 255, 0.9); border-color: rgba(255, 123, 84, 0.3);
+}
+
+.img-wrapper {
+    width: 100%; height: 180px; border-radius: 20px; overflow: hidden; background: transparent; margin-bottom: 10px;
+}
+.img-wrapper img {
+    width: 100%; height: 100%; object-fit: contain; padding: 5px; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+.product-card:hover .img-wrapper img { transform: scale(1.12) rotate(3deg); }
+
+.card-content {
+    padding: 10px 5px 5px 5px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;
+}
+.product-name { font-size: 1.3rem; font-weight: 800; color: #2D3748; margin-bottom: 5px; }
+.product-desc { font-size: 0.9rem; color: #718096; margin-bottom: 10px; }
+.product-price { font-size: 1.4rem; color: #FF7B54; font-weight: 900; margin-bottom: 15px; }
+
+.card-status { color: #E53E3E; font-weight: 800; background: rgba(229, 62, 62, 0.1); border-radius: 10px; padding: 5px; font-size: 1.1em; margin-bottom: 15px; }
+
+.add-to-cart-btn {
+    background: linear-gradient(135deg, #FF7B54, #FFB26B); color: #fff; border: none; width: 100%; padding: 12px;
+    border-radius: 15px; font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 8px 20px rgba(255, 123, 84, 0.25); cursor: pointer;
+}
+.add-to-cart-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(255, 123, 84, 0.4); }
+
+.disabled-button { background: #A0AEC0 !important; cursor: not-allowed; box-shadow: none !important; color: white !important; }
+.disabled-button:hover { transform: none; }
+
+/* Responsive Grid fix from old CSS */
+@media screen and (min-width: 990px) and (max-width: 1400px) {
+  .menu-item { flex: 0 0 33.33% !important; max-width: 33.33% !important; }
+}
+
+/* Toast */
+.toast {
+  visibility: hidden; min-width: 300px; text-align: right; border-radius: 15px; padding: 20px;
+  position: fixed; z-index: 10000; top: 100px; right: 20px; transform: translateX(100%);
+  background: rgba(229, 62, 62, 0.95); backdrop-filter: blur(15px); color: white;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0;
+}
+.toast.show { visibility: visible; opacity: 1; transform: translateX(0); }
+.toast-btn { background: none; border: none; color: #fff; font-size: 16px; cursor: pointer; padding: 5px 15px; border-radius: 8px; font-weight: 700; transition: 0.3s; }
+.toast-btn.toast-ok { background-color: white; color: #E53E3E; margin-top: 15px; margin-right: auto; display: block; }
+.toast-btn.toast-ok:hover { background: #FFD2D2; }
+.toast-btn.toast-close { position: absolute; top: 5px; left: 10px; font-size: 25px; padding: 0; opacity: 0.8; }
+.toast-btn.toast-close:hover { opacity: 1; }
